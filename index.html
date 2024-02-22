@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>迷宫寻宝</title>
+</head>
+<body>
+    <h2 style="text-align: center;">迷宫寻宝</h2>
+    <div class="grid-container">
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><div class="q"></div></div>
+    <div class="grid-item"><div class="q"></div></div>
+    <div class="grid-item"><div class="q"></div></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><div class="q"></div></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><div class="q"></div></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><div class="q"></div></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><div class="w"></div></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"><div class="q"></div></div>
+    </div>
+    <script src="Maze.js" type="module"></script>
+<script>
+    document.addEventListener('keydown',function(event){
+        if(event.key==='s'){
+            let script=document.createElement('script')
+            script.src="run_this.js"
+            script.type="module"
+            document.body.appendChild(script);
+        }
+    })
+</script>
+</body>
+</html>

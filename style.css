@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: aqua;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    padding:5px;
+    width: 350px; /* 整个网格的宽度，调整为合适的值 */
+    margin: 0 auto; /* 水平居中 */
+    background-color: rgba(255, 255, 255, 0.8);
+
+    
+}
+.grid-item{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    aspect-ratio: 1 / 1; /* 保证每个单元格是正方形 */
+}
+
+.q{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+.w{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: yellow;
+}
