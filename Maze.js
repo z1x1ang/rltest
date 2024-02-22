@@ -3,8 +3,7 @@ constructor(){
 //初始化主角位置
 this.gridItems=document.getElementsByClassName('grid-item');
 this.newDiv = document.createElement('div');
-this.newDiv.className = 'q';
-this.newDiv.style.backgroundColor='red';
+this.newDiv.className = 'q-hero';
 this.reset();
 //初始化陷阱位置
 this.hell=[6,7,8,16,18,20,24];

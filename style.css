@@ -21,13 +21,18 @@ body{
 .grid-item{
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 5px;
-    aspect-ratio: 1 / 1; /* 保证每个单元格是正方形 */
+   /*  aspect-ratio: 1 / 1; 保证每个单元格是正方形 */
 }
 
 .q{
     width: 100%;
     height: 100%;
     background-color: black;
+}
+.q-hero{
+    width: 100%;
+    height: 100%;
+    background-color: red;
 }
 .w{
     width: 55px;
