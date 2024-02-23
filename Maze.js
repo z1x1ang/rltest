@@ -2,16 +2,14 @@ class Maze{
 constructor(){
 //初始化主角位置
 this.gridItems=document.getElementsByClassName('grid-item');
-this.newDiv = document.createElement('div');
-this.newDiv.className = 'q-hero';
-this.reset();
+this.newDiv = document.querySelector('.q-hero');
 //初始化陷阱位置
 this.hell=[6,7,8,16,18,20,24];
 //初始化宝藏位置
 this.oval_pos=22;
-    }
+}
 reset(){
-   this.gridItems[0].appendChild(this.newDiv)
+   this.gridItems[0].appendChild(this.newDiv);
    return 0;
 }
 delay(ms) {

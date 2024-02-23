@@ -2,7 +2,12 @@ import Maze from './Maze.js'
 import RL from './RL_brain.js'
 let METHOD = "SARSA";
 const env = new Maze(); // 创建迷宫环境实例
-function update(RLInstance) {
+
+async function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function update(RLInstance) {
     // 收敛标记
     let flag = false;
     // 连续N次达到宝藏位置，即为收敛
@@ -26,6 +31,7 @@ function update(RLInstance) {
             tmp_policy[state_item] = action;
             // 采取行为获得下一个状态和回报,及是否终止
             let {s_:observation_, reward, done, oval_flag} = env.step(action);
+            await delay(100);  // 延时1秒
               // 在这里添加延时来实现动画效果
             if (METHOD == "SARSA") {
                 // 基于下一个状态选择行为
@@ -62,7 +68,7 @@ function update(RLInstance) {
             console.log(`算法${METHOD}在${episode_num}局时收敛,总步数为:${step_num}`);
             console.log('最优策略输出:');
             console.log(policy);
-    
+            console.table(RLInstance.q_table);
             // 在界面上进行展示
             env.reset();
             env.render_by_policy(policy);
@@ -74,6 +80,7 @@ function update(RLInstance) {
         // 达到设置的局数, 终止游戏
         console.log(`算法${METHOD}未收敛,但达到了100局,游戏结束`);
         // 在界面上进行展示
+        env.reset();
     }
  
     
