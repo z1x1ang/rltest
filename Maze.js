@@ -43,23 +43,24 @@ step(action){
         return;
 }
 
-let s_ = newIndex; // 移动后的新状态
 
 //移动到新位置
 this.gridItems[newIndex].appendChild(this.newDiv);
+let s_ = newIndex; // 移动后的新状态
+
 //根据当前位置来获得回报值,及是否终止
 let reward, done, oval_flag = false;
 if(s_==this.oval_pos){
     reward=1;
     done=true;
-    s='terminal';
+    s_="terminal";
     oval_flag=true;
 }
 
 else if(this.hell.includes(s_)){
     reward=-1;
     done=true;
-    s='terminal';
+    s_="terminal";
 }
 else 
 {

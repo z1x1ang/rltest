@@ -1,13 +1,14 @@
 import Maze from './Maze.js'
-import RL from './RL_brain.js'
-let METHOD = "SARSA";
+import { SarsaTable, QLearningTable } from './RL_brain.js';
+
+let METHOD = "Q-Learning";
 const env = new Maze(); // 创建迷宫环境实例
 
 async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function update(RLInstance) {
+function update(RLInstance) {
     // 收敛标记
     let flag = false;
     // 连续N次达到宝藏位置，即为收敛
@@ -31,13 +32,17 @@ async function update(RLInstance) {
             tmp_policy[state_item] = action;
             // 采取行为获得下一个状态和回报,及是否终止
             let {s_:observation_, reward, done, oval_flag} = env.step(action);
-            await delay(100);  // 延时1秒
+            //await delay(50);  // 延时100毫秒
               // 在这里添加延时来实现动画效果
-            if (METHOD == "SARSA") {
+            if (METHOD === "SARSA") {
                 // 基于下一个状态选择行为
                 let action_ = RLInstance.chooseAction(observation_);
                 // 基于变化 (s, a, r, s', a') 使用Sarsa进行Q的更新
-                RLInstance.learn(observation, action, reward, observation_, action_);
+                RLInstance.learn(observation,action,reward, observation_, action_);
+            }
+            else if(METHOD==='Q-Learning'){
+                RLInstance.learn(observation,action,reward,observation_)
+            }
                 // 改变状态和行为
                 observation = observation_;
                 c += 1;
@@ -48,7 +53,7 @@ async function update(RLInstance) {
                     console.log(policy);
                     console.log("*".repeat(50));
                     // 如果N次行走的策略相同，表示已经收敛
-                    if (JSON.stringify(policy) === JSON.stringify(tmp_policy) && oval_flag) {
+                    if (JSON.stringify(policy) == JSON.stringify(tmp_policy) && oval_flag) {
                         count += 1;
                         if (count == N) {
                             flag = true;
@@ -59,26 +64,25 @@ async function update(RLInstance) {
                     }
                     break;
                 }
-            }
-            if (flag) break;
             
-        }//while终止
-        if (flag) {
-            console.log("=".repeat(50));
-            console.log(`算法${METHOD}在${episode_num}局时收敛,总步数为:${step_num}`);
-            console.log('最优策略输出:');
-            console.log(policy);
-            console.table(RLInstance.q_table);
-            // 在界面上进行展示
-            env.reset();
-            env.render_by_policy(policy);
-            break; // 如果已经收敛，则不需要继续循环
         }
-     
-    } //大循环终止
+        if (flag) break;
+    } 
+
+     if (flag) {
+        console.log("=".repeat(50));
+        console.log(`算法${METHOD}在${episode_num}局时收敛,总步数为:${step_num}`);
+        console.log('最优策略输出:');
+        console.log(policy);
+        console.table(RLInstance.q_table);
+        // 在界面上进行展示
+        env.reset();
+        env.render_by_policy(policy);
+    }
     if (!flag) {
         // 达到设置的局数, 终止游戏
         console.log(`算法${METHOD}未收敛,但达到了100局,游戏结束`);
+        console.table(RLInstance.q_table);
         // 在界面上进行展示
         env.reset();
     }
@@ -89,7 +93,13 @@ function main() {
     // 假设 actions 参数是动作的数量，这里需要根据你的环境具体情况设置
     let actions = [0, 1, 2, 3]; // 例如，对于上、下、左、右的动作
     // 根据所选择的方法初始化RL实例
-    let RLInstance  = new RL(actions);
+    let RLInstance;
+    if(METHOD==='SARSA'){
+        RLInstance=new SarsaTable(actions);
+    }
+    else if(METHOD==='Q-Learning'){
+        RLInstance=new QLearningTable(actions);
+    }
     // 启动更新过程
     update(RLInstance);
 }
