@@ -60,7 +60,7 @@ video{
     border-radius: 50%;
     border: 1px solid black;
     background-color: yellow;
-    background-image: url(beauty.jpg);
+    background-image: url(beatuy.jpg);
     background-size: cover; /* 使背景图片铺满整个元素 */
     background-position: center; /* 背景图片居中 */
 }
