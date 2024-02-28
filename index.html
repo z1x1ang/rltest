@@ -7,7 +7,7 @@
     <title>迷宫寻宝</title>
 </head>
 <body>
-    <h2>迷宫寻宝</h2>
+    <h1>迷宫寻宝</h1>
     <div class="grid-container">
     <div class="grid-item"><div class="q-hero"></div></div>
     <div class="grid-item"></div>
@@ -35,10 +35,19 @@
     <div class="grid-item"></div>
     <div class="grid-item"><div class="q"></div></div>
     </div>
+    <video width="270" height="480" autoplay loop muted>
+        <source src="dancer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- 音频文件 -->
+    <audio id="mySong" src="yxjh.mp3"></audio>
     <script src="Maze.js" type="module"></script>
 <script>
+    var mySong = document.getElementById("mySong");
     document.addEventListener('keydown',function(event){
         if(event.key==='s'){
+            // 按下's'，播放音乐
+           mySong.play();
             let script=document.createElement('script')
             script.src="run_this.js"
             script.type="module"
