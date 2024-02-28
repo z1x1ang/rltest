@@ -14,7 +14,12 @@ h1{
 video{
     position: absolute;
     top:50px;
-    left:70px;
+    left:80px;
+}
+video{
+    position: absolute;
+    top:50px;
+    right:80px;
 }
 .grid-container {
     display: grid;
