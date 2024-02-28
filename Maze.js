@@ -3,6 +3,8 @@ constructor(){
 //初始化主角位置
 this.gridItems=document.getElementsByClassName('grid-item');
 this.newDiv = document.querySelector('.q-hero');
+//初始化动作空间 0上 1下 2左 3右
+this.action_space=[0,1,2,3]
 //初始化陷阱位置
 this.hell=[6,7,8,16,18,20,24];
 //初始化宝藏位置

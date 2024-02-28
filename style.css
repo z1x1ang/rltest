@@ -44,6 +44,9 @@ h2{
     position: absolute;
     background-color: red;
     z-index: 3; /* 确保它覆盖在 .q 上 */
+    background-image: url(tqm.jpg);
+    background-size: cover; /* 使背景图片铺满整个元素 */
+    background-position: center; /* 背景图片居中 */
 }
 
 .w {
