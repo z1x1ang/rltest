@@ -122,10 +122,13 @@
             if(!isPlayingmp4){
             video1.play();
             video2.play();
+            videoButton.innerHTML="暂停播放"
         }
         else{
             video1.pause();
             video2.pause();
+            videoButton.innerHTML="播放视频"
+
         }
         isPlayingmp4=!isPlayingmp4;
         })
@@ -134,9 +137,11 @@
         mp3Button.addEventListener('click',function(){
             if(!isPlayingmp3){
               km3.play()
+              mp3Button.innerHTML="暂停播放"
             }
             else{
                 km3.pause();
+                mp3Button.innerHTML="播放音乐"
             }
             isPlayingmp3=!isPlayingmp3;
         })
