@@ -27,9 +27,9 @@ h1{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    /* 430 */
-    width: 470px;
-    height: 470px;
+    /* 470 */
+    width: 475px;
+    height: 475px;
     margin: 0px auto;
     background-color: rgba(255, 255, 255, 0.8);
 }
@@ -45,8 +45,8 @@ h1{
 
 .q, .q-hero {
     position: absolute;
-    width: 77.4px;
-    height: 77.4px;
+    width: 77.5px;
+    height: 77.5px;
     z-index: 1;
     background-color: black;
 
@@ -63,8 +63,8 @@ h1{
 }
 
 .w {
-    width: 77.4px;
-    height: 77.4px;
+    width: 77.5px;
+    height: 77.5px;
     border-radius: 50%;
     border: 1px solid black;
     background-color: yellow;
