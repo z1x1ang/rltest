@@ -4,29 +4,32 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(56,96,66);
+    background-color:  rgb(19,36,23);
+   
 }
 h1{
-    margin-top: 2px;
-    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     text-align: center;
+    color: white;
 }
-video{
+#video1{
     position: absolute;
     top:50px;
-    left:80px;
+    left:9%;
 }
-video{
+#video2{
     position: absolute;
     top:50px;
-    right:80px;
+    right:9%;
 }
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    width: 430px;
-    height: 430px;
+    /* 430 */
+    width: 470px;
+    height: 470px;
     margin: 0px auto;
     background-color: rgba(255, 255, 255, 0.8);
 }
@@ -42,8 +45,8 @@ video{
 
 .q, .q-hero {
     position: absolute;
-    width: 71px;
-    height: 71px;
+    width: 77.4px;
+    height: 77.4px;
     z-index: 1;
     background-color: black;
 
@@ -60,8 +63,8 @@ video{
 }
 
 .w {
-    width: 71px;
-    height: 71px;
+    width: 77.4px;
+    height: 77.4px;
     border-radius: 50%;
     border: 1px solid black;
     background-color: yellow;
@@ -69,3 +72,30 @@ video{
     background-size: cover; /* 使背景图片铺满整个元素 */
     background-position: center; /* 背景图片居中 */
 }
+
+.btn {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 11;
+    -moz-border-radius: 11;
+    border-radius: 11px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }

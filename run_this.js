@@ -1,7 +1,7 @@
     import Maze from './Maze.js'
     import { SarsaTable, QLearningTable } from './RL_brain.js';
 
-    let METHOD = "Q-Learning";
+    let METHOD;
 
     async function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -102,8 +102,53 @@
     }
 
     // 确保DOM完全加载后再运行主函数
-    if (document.readyState === 'loading') {  // Loading hasn't finished yet
-        document.addEventListener('DOMContentLoaded', main);
-    } else {  // `DOMContentLoaded` has already fired
-        main();
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // 选择按钮
+        const sarsaButton = document.querySelector('.sarsa');
+        const qlearningButton = document.querySelector('.qlearning');
+        const mp3Button=document.querySelector(".mp3play")
+        const videoButton=document.querySelector('.videoplay')
+        // 获取视频元素
+        const video1 = document.getElementById('video1');
+        const video2 = document.getElementById('video2');
+        // 获取音乐元素
+        const km3=document.getElementById('mySong')
+        
+        //切换相关变量
+        let isPlayingmp3 = false; // 初始状态为暂停
+        let isPlayingmp4 = false; // 初始状态为暂停
+
+        videoButton.addEventListener('click',()=>{
+            if(!isPlayingmp4){
+            video1.play();
+            video2.play();
+        }
+        else{
+            video1.pause();
+            video2.pause();
+        }
+        isPlayingmp4=!isPlayingmp4;
+        })
+
+        //监听MP3按钮
+        mp3Button.addEventListener('click',function(){
+            if(!isPlayingmp3){
+              km3.play()
+            }
+            else{
+                km3.pause();
+            }
+            isPlayingmp3=!isPlayingmp3;
+        })
+        // 为SARSA按钮添加点击事件监听器
+        sarsaButton.addEventListener('click', function() {
+            METHOD = "SARSA";
+            main(); // 调用main函数启动SARSA
+        });
+    
+        // 为Q-Learning按钮添加点击事件监听器
+        qlearningButton.addEventListener('click', function() {
+            METHOD = "Q-Learning";
+            main(); // 调用main函数启动Q-Learning
+        });
+    });

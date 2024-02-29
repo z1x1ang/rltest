@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAACH5BAUUAAEALAAAAAAQABAAAAIoTAAO" type="image/gif">
     <title>迷宫寻宝</title>
 </head>
 <body>
@@ -35,29 +36,20 @@
     <div class="grid-item"></div>
     <div class="grid-item"><div class="q"></div></div>
     </div>
-    <video width="270" height="480" autoplay loop muted>
+    <video id="video1" width="270" height="480"loop muted>
         <source src="dancer.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
-       <video2 width="270" height="480" autoplay loop muted>
+    <video id="video2" width="270" height="480"loop muted>
         <source src="dancer.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video2>
+    </video>
+    <button class="btn sarsa" style="margin-top: 50px;margin-left: 30%;">开始(SARSA)</button>
+    <button class="btn qlearning" style="margin-top: 50px;">开始(Q-Learning)</button>
+    <button class="btn mp3play" style="margin-top: 50px;">播放音乐</button>
+    <button class="btn videoplay" style="margin-top: 50px;">播放视频</button>
+    <p style="color:rgba(255, 255, 255, 0.3); margin-left: 8%;">按F12观察控制台输出</p>
     <!-- 音频文件 -->
     <audio id="mySong" src="yxjh.mp3"></audio>
     <script src="Maze.js" type="module"></script>
-<script>
-    var mySong = document.getElementById("mySong");
-    document.addEventListener('keydown',function(event){
-        if(event.key==='s'){
-            // 按下's'，播放音乐
-           mySong.play();
-            let script=document.createElement('script')
-            script.src="run_this.js"
-            script.type="module"
-            document.body.appendChild(script);
-        }
-    })
-</script>
+    <script src="run_this.js" type="module"></script>
 </body>
 </html>
