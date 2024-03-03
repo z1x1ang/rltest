@@ -66,6 +66,7 @@ else if(this.hell.includes(s_)){
 }
 else 
 {
+//reward=0
 reward=0;
 done=false;
 }

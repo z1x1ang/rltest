@@ -1,5 +1,5 @@
 class RL{
-    constructor(actions,learning_rate=0.01,reward_decay=0.9,e_greedy=0.9){
+    constructor(actions,learning_rate=0.01,reward_decay=0.9,e_greedy=0.85){
         this.actions=actions;
         this.lr=learning_rate;
         this.gamma=reward_decay;
@@ -18,8 +18,9 @@ class RL{
     //observation 某个状态state，0,1,2,3
     chooseAction(observation) {
         this.checkStateExist(observation); // 确保状态存在
-        //从均匀分布的[0,1)中随机采样,当小于阈值时采用选择最优行为的方式,当大于阈值选择随机行为的方式,这样人为增加随机性是为了解决陷入局部最优
-        if (Math.random() < this.epsilon) {
+        //从均匀分布的[0,1)中随机采样,当小于阈值时采用选择最优行为的方式,当大于阈值选择随机行为的方式
+        
+        if (Math.random() > this.epsilon) {
             // ε-greedy 策略选择动作
             const stateActionValues = this.q_table[observation];
             // 找出最大值
@@ -40,6 +41,14 @@ class RL{
             return this.actions[randomIndex];
         }
     }
+    //线性递减
+    updateEpsilon(currentEpisode) {
+        //线性递减epsilon
+        const initialEpsilon = this.epsilon; // 初始epsilon值
+        const minEpsilon = 0.01; // epsilon的最小值
+        const decayRate = (initialEpsilon - minEpsilon) / 100; // 计算递减率
+        this.epsilon = Math.max(0.1, initialEpsilon - decayRate * currentEpisode); // 更新epsilon值，确保不小于最小值
+    }    
 }
 
 
