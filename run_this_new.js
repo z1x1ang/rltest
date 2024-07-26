@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //监听MP3按钮
     mp3Button.addEventListener('click',function(){
         if(!isPlayingmp3){
+          km3.volume = 0.5; // 设置音量为50%
           km3.play()
           mp3Button.innerHTML="暂停播放"
         }
